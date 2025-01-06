@@ -7,7 +7,6 @@ interface ICell {
   clicked: boolean;
   id: number;
   clickedCells: (idCell: number) => void;
-  // clickCells: boolean
 }
 
 const PlayingField = () => {
