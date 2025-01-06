@@ -8,26 +8,26 @@ import Counter from '../Counter/Counter.tsx';
 const PlayingField = () => {
 
   const drawCells = () => {
-    const cellsArray = []
+    const cellsArray = [];
     for (let i = 0; i < 36; i++) {
       cellsArray.push({hasItem: false, clicked: false, id: i + 1});
     }
     cellsArray[Math.floor(Math.random() * 36)].hasItem = true;
-    return cellsArray
-  }
+    return cellsArray;
+  };
 
   const [cells, setCells] = useState<ICell[]>(drawCells());
-  const [countTries, setCountTries] = useState<number>(0)
+  const [countTries, setCountTries] = useState<number>(0);
 
   const clickedCells = (idCell: number) => {
     setCells(prevState => prevState.map((cell) => cell.id === idCell ? {...cell, clicked: true} : cell));
     setCountTries(prevState => prevState + 1);
-  }
+  };
 
   const newGame = () => {
     setCells(drawCells());
-    setCountTries(0)
-  }
+    setCountTries(0);
+  };
 
   return (
     <>
@@ -43,7 +43,6 @@ const PlayingField = () => {
       <Counter tries={countTries}/>
       <Button resetGame={newGame}/>
     </>
-
   );
 };
 

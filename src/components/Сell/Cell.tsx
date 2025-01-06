@@ -5,7 +5,6 @@ interface Props {
   hasItem: boolean,
   clicked: boolean,
   onClickCell: MouseEventHandler<HTMLDivElement>,
-  clickedCell?: string[]
 }
 
 const Cell: React.FC<Props> = ({hasItem, clicked, onClickCell}) => {
