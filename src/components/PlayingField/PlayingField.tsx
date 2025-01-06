@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Cell from '../Сell/Cell.tsx';
 import { ICell } from '../../types';
 import Button from '../Button/Button.tsx';
+import Counter from '../Counter/Counter.tsx';
 
 const PlayingField = () => {
 
@@ -16,13 +17,16 @@ const PlayingField = () => {
   }
 
   const [cells, setCells] = useState<ICell[]>(drawCells());
+  const [countTries, setCountTries] = useState<number>(0)
 
   const clickedCells = (idCell: number) => {
     setCells(prevState => prevState.map((cell) => cell.id === idCell ? {...cell, clicked: true} : cell));
+    setCountTries(prevState => prevState + 1);
   }
 
   const newGame = () => {
-    setCells(drawCells())
+    setCells(drawCells());
+    setCountTries(0)
   }
 
   return (
@@ -36,6 +40,7 @@ const PlayingField = () => {
           />
         ))}
       </div>
+      <Counter tries={countTries}/>
       <Button resetGame={newGame}/>
     </>
 
